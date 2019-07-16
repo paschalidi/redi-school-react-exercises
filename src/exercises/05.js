@@ -14,3 +14,5 @@ export function PremierLeagueFixtures() {
 		<div className='fixtures'></div>
 	);
 }
+
+export {PremierLeagueFixtures as default}

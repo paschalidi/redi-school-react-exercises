@@ -15,3 +15,5 @@ export function Player(props) {
 		</div>
 	);
 }
+
+export {Player as default}

@@ -11,3 +11,5 @@ export function TotalScore(props) {
 		<div>The total score is: {total}</div>
 	);
 }
+
+export {TotalScore as default}

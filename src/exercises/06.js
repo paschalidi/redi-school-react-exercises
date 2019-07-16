@@ -7,3 +7,4 @@ export function Welcome(props) {
     
   </div>;
 }
+export {Welcome as default}

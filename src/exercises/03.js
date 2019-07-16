@@ -12,3 +12,4 @@ export function BasketballStar() {
 		</div>
 	)
 }
+export {BasketballStar as default}

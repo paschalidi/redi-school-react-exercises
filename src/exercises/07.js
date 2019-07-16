@@ -10,3 +10,5 @@ export function DisplayFirstAndLastName(props) {
 		<div className='lastName'>Last name: {props.lastName}</div>
 	</div>
 }
+
+export {DisplayFirstAndLastName as default}

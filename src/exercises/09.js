@@ -18,3 +18,5 @@ export function ScoreDetails(props) {
     </div>
   );
 }
+
+export {ScoreDetails as default}
