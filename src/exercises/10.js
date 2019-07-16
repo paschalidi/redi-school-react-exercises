@@ -1,3 +1,4 @@
+import React from 'react'
 // We would like to create a React component that 
 // given as an property an Array of numbers,
 // would return the totla amount of the score.

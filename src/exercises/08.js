@@ -1,3 +1,4 @@
+import React from 'react'
 // By popular demand, we'd like to introduce 
 // a new view into the platform to displaying the 
 // average score of a given user.

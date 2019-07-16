@@ -1,3 +1,4 @@
+import React from 'react'
 // Please create a component to display basic details
 // of a given list of scores:
 

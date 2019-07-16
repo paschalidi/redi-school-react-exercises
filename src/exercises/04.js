@@ -1,3 +1,4 @@
+import React from 'react'
 // We're trying to define a new React component to display the details 
 // of our last order:
 

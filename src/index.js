@@ -4,22 +4,41 @@ import { Route, Switch } from "react-router";
 import { BrowserRouter, Link } from "react-router-dom";
 
 import "./styles.css";
-const files = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"];
+const files = [
+  { filename: "01" },
+  { filename: "02" },
+  { filename: "03" },
+  { filename: "04" },
+  { filename: "05" },
+  { filename: "06" },
+  { filename: "07", props: { firstName: "Anna", lastName: "Pavlikova" } },
+  {
+    filename: "08",
+    props: { person: { name: "A react wizz", score: 100 } }
+  },
+  { filename: "09", props: { scores: [10, 20] } },
+  { filename: "10", props: { scores: [10, 20] } }
+];
 
-const pages = files.reduce((p, filename, index, fullArray) => {
-  const exercise = require(`./exercises/${filename}`);
-  Object.assign(exercise, {
-    previous: fullArray[index - 1],
-    next: fullArray[index + 1],
-    isolatedPath: `/isolated/exercises/${filename}`
-  });
-  p[filename] = {
-    exercise,
-    title: filename,
-    filename
-  };
-  return p;
-}, {});
+const pages = files.reduce(
+  (p, { filename, props }, index, fullArray) => {
+    const exercise = require(`./exercises/${filename}`);
+    console.log(filename);
+    Object.assign(exercise, {
+      previous: fullArray[index - 1],
+      next: fullArray[index + 1]
+    });
+    p[filename] = {
+      exercise,
+      filename,
+      renderComponentWithProps: props
+    };
+    return p;
+  },
+  {}
+);
+
+console.log(pages);
 
 class ErrorCatcher extends React.Component {
   static getDerivedStateFromProps() {
@@ -44,8 +63,7 @@ class ErrorCatcher extends React.Component {
 
 function NavigationFooter({ exerciseId, type }) {
   const current = pages[exerciseId];
-  let suffix = "";
-  let Usage = current.exercise;
+  const { previous, next } = current.exercise;
 
   return (
     <div
@@ -56,9 +74,9 @@ function NavigationFooter({ exerciseId, type }) {
       }}
     >
       <div style={{ flex: 1 }}>
-        {Usage.previous ? (
-          <Link to={`/${Usage.previous}${suffix}`}>
-            {pages[Usage.previous].title}{" "}
+        {previous ? (
+          <Link to={`/${previous.filename}`}>
+            {previous.filename}{" "}
             <span role="img" aria-label="previous">
               👈
             </span>
@@ -66,15 +84,20 @@ function NavigationFooter({ exerciseId, type }) {
         ) : null}
       </div>
       <div style={{ flex: 1, textAlign: "center" }}>
-        <Link to="/">Home</Link>
+        <Link to="/">
+          Home{" "}
+          <span role="img" aria-label="home">
+            🏡
+          </span>{" "}
+        </Link>
       </div>
       <div style={{ flex: 1, textAlign: "center" }}>
-        {Usage.next ? (
-          <Link to={`/${Usage.next}${suffix}`}>
+        {next ? (
+          <Link to={`/${next.filename}`}>
             <span role="img" aria-label="next">
               👉
             </span>{" "}
-            {pages[Usage.next].title}
+            {next.filename}
           </Link>
         ) : null}
       </div>
@@ -85,12 +108,15 @@ function NavigationFooter({ exerciseId, type }) {
 function ComponentContainer({ label, match, ...props }) {
   const { exerciseId } = match.params;
   const {
-    exercise: { default: Exercise }
+    exercise: { default: Exercise },
+    renderComponentWithProps
   } = pages[exerciseId];
 
   console.log(Exercise);
   return (
     <div>
+      <NavigationFooter exerciseId={exerciseId} type="page" />
+
       <div style={{ display: "flex", flexDirection: "column" }}>
         <h2 style={{ textAlign: "center" }}>{label}</h2>
         <div
@@ -104,11 +130,10 @@ function ComponentContainer({ label, match, ...props }) {
           }}
         >
           <ErrorCatcher {...props}>
-            <Exercise />
+            <Exercise {...renderComponentWithProps} />
           </ErrorCatcher>
         </div>
       </div>
-      <NavigationFooter exerciseId={exerciseId} type="page" />
     </div>
   );
 }
@@ -122,7 +147,12 @@ function Home() {
           return (
             <div key={filename} style={{ margin: 10 }}>
               {filename}. {}
-              <Link to={`/${filename}`}>Look into the details 🦄</Link>
+              <Link to={`/${filename}`}>
+                Look into the details{" "}
+                <span role="img" aria-label="uni">
+                  🦄
+                </span>
+              </Link>
             </div>
           );
         })}
