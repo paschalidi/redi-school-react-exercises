@@ -23,11 +23,12 @@ const files = [
 const pages = files.reduce(
   (p, { filename, props }, index, fullArray) => {
     const exercise = require(`./exercises/${filename}`);
-    console.log(filename);
     Object.assign(exercise, {
       previous: fullArray[index - 1],
       next: fullArray[index + 1]
     });
+    console.log(exercise)
+
     p[filename] = {
       exercise,
       filename,
@@ -38,7 +39,7 @@ const pages = files.reduce(
   {}
 );
 
-console.log(pages);
+const pagesSorted = Object.values(pages).sort((a,b)=> parseInt(a.filename, 10) -  parseInt(b.filename, 10))
 
 class ErrorCatcher extends React.Component {
   static getDerivedStateFromProps() {
@@ -62,8 +63,10 @@ class ErrorCatcher extends React.Component {
 }
 
 function NavigationFooter({ exerciseId, type }) {
-  const current = pages[exerciseId];
+  const current = pagesSorted[parseInt(exerciseId -1 ,10)]
+
   const { previous, next } = current.exercise;
+  console.log( current.exercise)
 
   return (
     <div
@@ -110,9 +113,9 @@ function ComponentContainer({ label, match, ...props }) {
   const {
     exercise: { default: Exercise },
     renderComponentWithProps
-  } = pages[exerciseId];
+  } = pagesSorted[parseInt(exerciseId -1,10)];
+  
 
-  console.log(Exercise);
   return (
     <div>
       <NavigationFooter exerciseId={exerciseId} type="page" />
@@ -143,7 +146,7 @@ function Home() {
     <div>
       <h1 style={{ textAlign: "center" }}>React Component Patterns</h1>
       <div>
-        {Object.values(pages).map(({ filename }) => {
+        {pagesSorted.map(({ filename }) => {
           return (
             <div key={filename} style={{ margin: 10 }}>
               {filename}. {}
