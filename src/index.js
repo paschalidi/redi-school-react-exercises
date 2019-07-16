@@ -45,19 +45,14 @@ class ErrorCatcher extends React.Component {
 function NavigationFooter({ exerciseId, type }) {
   const current = pages[exerciseId];
   let suffix = "";
-  let Usage = current.final;
-  if (type === "exercise") {
-    suffix = "/exercise";
-    Usage = current.exercise;
-  } else if (type === "final") {
-    suffix = "/final";
-  }
+  let Usage = current.exercise;
+
   return (
     <div
       style={{
         display: "flex",
         justifyContent: "space-between",
-        gridColumn: "span 2"
+        gridColumn: "span"
       }}
     >
       <div style={{ flex: 1 }}>
@@ -73,7 +68,7 @@ function NavigationFooter({ exerciseId, type }) {
       <div style={{ flex: 1, textAlign: "center" }}>
         <Link to="/">Home</Link>
       </div>
-      <div style={{ flex: 1, textAlign: "right" }}>
+      <div style={{ flex: 1, textAlign: "center" }}>
         {Usage.next ? (
           <Link to={`/${Usage.next}${suffix}`}>
             <span role="img" aria-label="next">
@@ -95,22 +90,25 @@ function ComponentContainer({ label, match, ...props }) {
 
   console.log(Exercise);
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <h2 style={{ textAlign: "center" }}>{label}</h2>
-      <div
-        style={{
-          flex: 1,
-          padding: 20,
-          border: "1px solid",
-          display: "grid",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <ErrorCatcher {...props} >
-          <Exercise />
-        </ErrorCatcher>     
+    <div>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <h2 style={{ textAlign: "center" }}>{label}</h2>
+        <div
+          style={{
+            flex: 1,
+            padding: 20,
+            border: "1px solid",
+            display: "grid",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <ErrorCatcher {...props}>
+            <Exercise />
+          </ErrorCatcher>
+        </div>
       </div>
+      <NavigationFooter exerciseId={exerciseId} type="page" />
     </div>
   );
 }

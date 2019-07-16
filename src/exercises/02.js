@@ -7,6 +7,7 @@ function Welcome() {
 	return (
 		<div>
 			<p>Welcome</p>
+			<p>to React</p>
 		</div>
 	);
 }

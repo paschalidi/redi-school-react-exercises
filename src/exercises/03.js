@@ -1,3 +1,4 @@
+import React from 'react'
 // We want to introduce a new component (BasketballStar) 
 // to display some details about some legendary basketball players!
 
