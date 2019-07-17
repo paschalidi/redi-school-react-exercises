@@ -144,17 +144,13 @@ function ComponentContainer({ label, match, ...props }) {
 function Home() {
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>React Component Patterns</h1>
+      <h1 style={{ textAlign: "center" }}>React Components part 1</h1>
       <div>
         {pagesSorted.map(({ filename }) => {
           return (
             <div key={filename} style={{ margin: 10 }}>
-              {filename}. {}
               <Link to={`/${filename}`}>
-                Look into the details{" "}
-                <span role="img" aria-label="uni">
-                  🦄
-                </span>
+                Training {filename}
               </Link>
             </div>
           );
