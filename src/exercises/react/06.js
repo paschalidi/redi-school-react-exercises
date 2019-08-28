@@ -4,6 +4,6 @@ import React from 'react';
 // The property that this component takes when its
 // being user will be `user`.
 export function Welcome(props) {
-  return <div></div>;
+  return <div>💰💰</div>;
 }
 export {Welcome as default};

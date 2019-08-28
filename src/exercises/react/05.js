@@ -11,7 +11,7 @@ import React from 'react';
 //      .result with content `3-1`
 
 export function PremierLeagueFixtures() {
-  return <div className="fixtures"></div>;
+  return <div className="fixtures">💰💰</div>;
 }
 
 export {PremierLeagueFixtures as default};

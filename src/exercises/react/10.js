@@ -6,7 +6,7 @@ import React from 'react';
 
 export function TotalScore(props) {
   let scores = props.scores; // this line is given by the exercise
-  return <div></div>;
+  return <div>💰💰</div>;
 }
 
 export {TotalScore as default};

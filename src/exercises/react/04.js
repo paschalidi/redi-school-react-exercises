@@ -11,7 +11,7 @@ import React from 'react';
 
 export function BookDetails() {
   return (
-    <div>hello</div>
+    <div>💰💰</div>
     // <div>
     // 	<div>32156
     // 	<div>JavaScript: The Good Parts

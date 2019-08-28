@@ -5,7 +5,7 @@ import React from 'react';
 // 2. to React
 function Welcome() {
   return (
-    <div></div>
+    <div>💰</div>
   );
 }
 

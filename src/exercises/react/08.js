@@ -6,8 +6,8 @@ import React from 'react';
 export function Player(props) {
   return (
     <div>
-      <p className="name"></p>
-      <p className="score"></p>
+      <p className="name">💰💰</p>
+      <p className="score">💰💰</p>
     </div>
   );
 }

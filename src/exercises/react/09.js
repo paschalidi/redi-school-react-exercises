@@ -12,9 +12,9 @@ import React from 'react';
 export function ScoreDetails(props) {
   return (
     <div>
-      <div className="total"></div>
-      <div className="first"></div>
-      <div className="second"></div>
+      <div className="total">💰💰</div>
+      <div className="first">💰💰</div>
+      <div className="second">💰💰</div>
     </div>
   );
 }

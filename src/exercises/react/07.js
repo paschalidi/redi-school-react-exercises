@@ -7,8 +7,8 @@ import React from 'react';
 export function DisplayFirstAndLastName(props) {
   return (
     <div>
-      <div className="firstName"></div>
-      <div className="lastName"></div>
+      <div className="firstName">💰💰</div>
+      <div className="lastName">💰💰</div>
     </div>
   );
 }
