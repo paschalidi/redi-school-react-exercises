@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 // Please create a component to display basic details
 // of a given list of scores:
 
@@ -20,4 +20,4 @@ export function ScoreDetails(props) {
   );
 }
 
-export {ScoreDetails as default}
+export {ScoreDetails as default};
