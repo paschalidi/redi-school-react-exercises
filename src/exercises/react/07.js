@@ -4,12 +4,11 @@ import React from 'react';
 // The properties that this component takes when its
 // being user will be `firstName` and `lastName`.
 
-// **solved**
 export function DisplayFirstAndLastName(props) {
   return (
     <div>
-      <div className="firstName">First name: {props.firstName}</div>
-      <div className="lastName">Last name: {props.lastName}</div>
+      <div className="firstName"></div>
+      <div className="lastName"></div>
     </div>
   );
 }

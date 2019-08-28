@@ -3,12 +3,11 @@ import React from 'react';
 // a new view into the platform to displaying the
 // average score of a given user.
 
-// **solved**
 export function Player(props) {
   return (
     <div>
-      <p className="name">Name: {props.person.name}</p>
-      <p className="score">Score: {props.person.score}</p>
+      <p className="name"></p>
+      <p className="score"></p>
     </div>
   );
 }
