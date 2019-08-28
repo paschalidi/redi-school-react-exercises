@@ -22,7 +22,7 @@ const files = [
 
 const pages = files.reduce(
   (p, { filename, props }, index, fullArray) => {
-    const exercise = require(`./exercises/${filename}`);
+    const exercise = require(`./exercises/react/${filename}`);
     Object.assign(exercise, {
       previous: fullArray[index - 1],
       next: fullArray[index + 1]
